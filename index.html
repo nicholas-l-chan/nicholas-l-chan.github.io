@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicholas Chan | About </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Sans Flex & Crimson Text imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Google+Sans+Flex:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Light mode color specifications */
+            --bg-color: #f5f5f5;
+            --text-color: #0f0f0f;
+            --muted-color: #0f0f0f;
+            --link-color: #0f0f0f;
+            --border-color: #0f0f0f;
+            
+            /* Typography definitions */
+            --font-heading: 'Google Sans Flex', 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-body: 'Crimson Text', Georgia, serif;
+        }
+
+        /* Dark mode preferences */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f0f0f;
+                --text-color: #ffffff;
+                --muted-color: #ffffff;
+                --link-color: #ffffff;
+                --border-color: #ffffff;
+            }
+        }
+
+        html.dark {
+            --bg-color: #0f0f0f;
+            --text-color: #ffffff;
+            --muted-color: #ffffff;
+            --link-color: #ffffff;
+            --border-color: #ffffff;
+        }
+
+        html.light {
+            --bg-color: #fafafa;
+            --text-color: #000000;
+            --muted-color: #000000;
+            --link-color: #000000;
+            --border-color: #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            font-size: 1.25rem; /* ~20px for high editorial readability */
+            line-height: 1.65;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.15s ease, color 0.15s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 4.5rem 1.5rem 6rem 1.5rem;
+        }
+
+        /* Headings use Google Sans Flex */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--text-color);
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-top: 3.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 0.35rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: opacity 0.15s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .theme-toggle svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Show/hide sun vs moon based on active theme state */
+        .icon-sun { display: none; }
+        .icon-moon { display: block; }
+
+        html.dark .icon-sun { display: block; }
+        html.dark .icon-moon { display: none; }
+
+        @media (prefers-color-scheme: dark) {
+            html:not(.light) .icon-sun { display: block; }
+            html:not(.light) .icon-moon { display: none; }
+        }
+
+        p {
+            color: var(--text-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-decoration-color: var(--border-color);
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Minimal stacked layout for items/writings/projects */
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: var(--font-body);
+        }
+
+        .item-list li {
+            margin-bottom: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-color);
+        }
+
+        @media (min-width: 500px) {
+            .item-list li {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+        }
+
+        .item-date {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 0.2rem;
+        }
+
+        @media (min-width: 500px) {
+            .item-date {
+                margin-top: 0;
+                margin-left: 1.5rem;
+                white-space: nowrap;
+            }
+        }
+
+        .links-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+        }
+
+        footer {
+            margin-top: 4.5rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div>
+                <!-- CUSTOMIZATION: Name -->
+                <h1>Nicholas Chan</h1>
+                <!-- CUSTOMIZATION: Tagline / Role -->
+                <div class="subtitle">subheader loading</div>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+                <!-- Sun Icon (Shown in Dark Mode) -->
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon Icon (Shown in Light Mode) -->
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <main>
+            <section>
+                <p>
+                    I've spent the past decade in the technology industry, working at the intersection of web platforms, content, and growth. I enjoy reading broadly and keeping up with tech industry news, behavioral science, psychology, and international relations.
+                <p>
+                    Please reach out at the links below to get in touch.
+                </p>
+            </section>
+
+            <section>
+                <h2>Contact</h2>
+                <div class="links-inline">
+                    <a href="https://www.linkedin.com/in/nicholaslchan" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://x.com/nicholaslchan" target="_blank" rel="noopener">Twitter / X</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Nicholas Chan &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 
+                               (document.documentElement.classList.contains('light') ? 'light' : 
+                               (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>
